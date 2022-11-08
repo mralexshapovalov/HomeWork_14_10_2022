@@ -5,21 +5,21 @@
 
 using namespace std;
 
-void FillRand(int* array,int minValue, int maxValue, int sizeArray)
+void FillRand(int* array, double minValue, int maxValue, int sizeArray)
 {
 
- 
+
     for (int i = 0; i < sizeArray; i++)
     {
 
-        array[i] = rand() % (minValue - maxValue);
+        array[i] = minValue + rand() * (maxValue - minValue) / RAND_MAX;
     }
-    
- 
+
+
 
 }
 
-void Print(int* array,int  sizeArray) //выводит массив на экран
+void Print(int* array, int  sizeArray) //выводит массив на экран
 {
 
     for (int i = 0; i < sizeArray; i++)
@@ -27,19 +27,19 @@ void Print(int* array,int  sizeArray) //выводит массив на экр�
 
         cout << array[i] << "\t";
     }
-    
+
 }
-void  Sum(int *array,int sizeArray) //возвращает сумму элементов массива
+void  Sum(int* array, int sizeArray) //возвращает сумму элементов массива
 {
     int sum = 0;
     for (int i = 0; i < sizeArray; i++)
-    
-        sum += array[i];
-  
 
-    cout <<"Sum = " << sum << endl;
- 
-  
+        sum += array[i];
+
+
+    cout << "Sum = " << sum << endl;
+
+
 }
 void Avg(int* array, int sizeArray) //возвращает среднее-арифметическое элементов массива
 {
@@ -60,97 +60,166 @@ void MinValueIn(int* array, int sizeArray) //возвращает минимал
 {
 
     int min = array[0];
-  
+    int m=0;
     for (int i = 0; i < sizeArray; i++) 
+    {
+
+
+        if (array[i] > min)
+            m = i;
+
+        min = array[m];
+
+        cout << "min = " << min << m << endl;
+
+
+    }
+    
     
 
-        if (array[i] < min) 
+        
+
+    
+
+
+       
+    
+}
+
+void MaxValueIn(int* array, int sizeArray) //возвращает максимальное значение из массива
+{
+
+    int min = array[0];
+    int type;
+    for (int i = 0; i < sizeArray; i++) 
+    {
+        if (array[i] > min)
         {
 
             min = array[i];
-            cout << "min = " << min << endl;
+            type = i;
         }
+    }
+    cout << "min = " << min << "-" << type << endl;
+
+     
+ 
+
+   
+
 
 }
 
-void MaxValueIn() //возвращает максимальное значение из массива
+void ShiftLeft(int* array, int sizeArray) //выполняет циклический сдвиг массива на заданное число элементов влево
 {
-
-
-
-}
-
-void ShiftLeft() //выполняет циклический сдвиг массива на заданное число элементов влево
-{
-
-    cout << "Циклический сдвиг влево" << endl;
-    cout << "Введите колличество элементов "; cin >> value;
+    int value;
+    cout << "Cycle shift left" << endl;
+    cout << "Enter the number if items : "; cin >> value;
 
     for (int i = 0; i < value; i++)
     {
-        buffer = mas[0];
+        int buffer = array[0];
 
-        for (int j = 0; j < size; j++)
+        for (int j = 0; j < sizeArray; j++)
         {
-            mas[j] = mas[j + 1];
+            array[j] = array[j + 1];
 
         }
-        mas[size - 1] = buffer;
-        cout << endl;
-    }
+        array[sizeArray - 1] = buffer;
 
-    for (int i = 0; i < size; i++)
+    }
+    cout << endl;
+
+    for (int i = 0; i < sizeArray; i++)
     {
-        cout << mas[i] << "\t";
+        cout << array[i] << "\t";
 
     }
-    
+
 }
 
-void ShiftRight() //выполняет циклический сдвиг массива на заданное число элементов вправо
+void ShiftRight(int* array, int sizeArray) //выполняет циклический сдвиг массива на заданное число элементов вправо
 {
-    cout << "Циклический сдвиг вправо" << endl;
-    cout << "Введите колличество элементов "; cin >> value;
+    int value;
+    cout << "Cycle shift Right" << endl;
+    cout << "Enter the number if items : "; cin >> value;
 
     for (int i = 0; i < value; i++)
     {
-        buffer = mas[size - 1];
+        int  buffer = array[sizeArray - 1];
 
-        for (int j = size - 1; j >= 0; j--)
+        for (int j = sizeArray - 1; j >= 0; j--)
         {
-            mas[j] = mas[j - 1];
+            array[j] = array[j - 1];
         }
-        mas[0] = buffer;
+        array[0] = buffer;
         cout << endl;
     }
-
-    for (int i = 0; i < size; i++)
+    cout << endl;
+    for (int i = 0; i < sizeArray; i++)
     {
-        cout << mas[i] << "\t";
+        cout << array[i] << "\t";
 
     }
 }
 
-void Sort()  //выполняет сортировку массива в порядке возрастания
+void Sort(int* array, int sizeArray)  //выполняет сортировку массива в порядке возрастания
 {
+    int emptyValue;
 
+    for (int i = 0; i <= sizeArray; i++)
+    {
+
+        for (int j = i + 1; j <= sizeArray; j++)
+        {
+
+            if (array[i] > array[j])
+            {
+
+                emptyValue = array[i];
+
+                array[i] = array[j];
+
+                array[j] = emptyValue;
+            }
+
+        }
+
+    }
+
+    for (int i = 0; i <= sizeArray; i++)
+    {
+
+        cout << array[i] << "\t";
+
+    }
+
+}
+
+
+void UinqueRand(int* array, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
+{
 
 
 }
 
 
-void UinqueRand()  //заполняет массив уникальными случайными числами в заданном диапазоне
+void Search(int* array, int sizeArray)  //находит в массиве повторяюшиеся значения, выводит их на экран
 {
+    int sum = 0;
+    for (int i = 0; i < sizeArray; i++)
+    {
+       
+        for (int j = i + 1; j < sizeArray; j++)
+        {
+            if (array[i] == array[j])
+            {
+                
+                cout << array[i]<< "\t";
 
-
-}
-
-
-void Search()  //находит в массиве повторяюшиеся значения, выводит их на экран
-{
-
-
-
+            }
+        }
+    }
 }
 
 
@@ -167,20 +236,66 @@ int main()
     cout << "Enter the size array :";  cin >> sizeArray;
     int* array = new int[sizeArray]; //*Óêàçàòåëü(Çíàþ íå ïðîõîäèëè,íî ðåøèë ïîïðîáûâàòü)
 
-   
-        FillRand(array,minValue, maxValue, sizeArray);
 
-    
-  
+    int type;
+
+
+
+
+
+
+    FillRand(array, minValue, maxValue, sizeArray);
     Print(array, sizeArray);
-    
-    Sum(array, sizeArray);
 
-    Avg(array, sizeArray);
-    MinValueIn(array, sizeArray);
-    
+    cout << endl;
+    cout << "Select an action :" << endl;
+    cin >> type;
 
-    
+
+    switch (type)
+    {
+
+    case 1:
+        Sum(array, sizeArray);
+        break;
+
+    case 2:
+        Avg(array, sizeArray);
+        break;
+
+    case 3:
+        MinValueIn(array, sizeArray);
+        break;
+
+    case 4:
+        MaxValueIn(array, sizeArray);
+        break;
+
+    case 5:
+        ShiftLeft(array, sizeArray);
+        break;
+
+    case 6:
+        ShiftRight(array, sizeArray);
+        break;
+
+    case 7:
+        Sort(array, sizeArray);
+        break;
+
+    case 9:
+        Search(array, sizeArray);
+        break;
+
+
+
+    default:
+        break;
+    }
+
+
+
+
     delete[] array;
 }
 
