@@ -8,15 +8,11 @@ using namespace std;
 void FillRand(int* array, double minValue, int maxValue, int sizeArray)
 {
 
-
     for (int i = 0; i < sizeArray; i++)
     {
 
         array[i] = minValue + rand() * (maxValue - minValue) / RAND_MAX;
     }
-
-
-
 }
 
 void Print(int* array, int  sizeArray) //выводит массив на экран
@@ -37,77 +33,60 @@ void  Sum(int* array, int sizeArray) //возвращает сумму элем�
         sum += array[i];
 
 
-    cout << "Sum = " << sum << endl;
+    cout << "Sum of array elemetst = " << sum << endl;
 
 
 }
 void Avg(int* array, int sizeArray) //возвращает среднее-арифметическое элементов массива
 {
 
-    int avg = 0;
-    int sum = 0;
-    for (int i = 0; i < sizeArray; i++)
+    int temp = 0;
+    int sumElemnts = 0;
+    for (int i = 0; i < sizeArray; i++) 
+    {
+        temp += array[i];
+        sumElemnts = temp / sizeArray;
+    }
 
-        avg += array[i];
-    sum = avg / sizeArray;
-
-    cout << "avg = " << sum << endl;
-
+    cout << "The arithmetic mean of the elements  = " << sumElemnts << endl;
 
 }
 
 void MinValueIn(int* array, int sizeArray) //возвращает минимальное значение из массива
 {
 
-    int min = array[0];
-    int m=0;
+    int minElement = array[0];
+    int cell =0;
     for (int i = 0; i < sizeArray; i++) 
     {
 
+        if (array[i] < minElement) 
+        {
+            cell = i;
 
-        if (array[i] > min)
-            m = i;
-
-        min = array[m];
-
-        cout << "min = " << min << m << endl;
-
-
+            minElement = array[cell];
+        }
+          
     }
-    
-    
-
-        
-
-    
-
-
-       
-    
+    cout << "Minimum value in the array = " << minElement << " " << "Cell" << "[" << cell << "]" << endl;
 }
 
 void MaxValueIn(int* array, int sizeArray) //возвращает максимальное значение из массива
 {
 
-    int min = array[0];
-    int type;
+    int maxElement = array[0];
+    int cell;
     for (int i = 0; i < sizeArray; i++) 
     {
-        if (array[i] > min)
+        if (array[i] > maxElement)
         {
+            cell = i;
+            maxElement = array[i];
 
-            min = array[i];
-            type = i;
         }
-    }
-    cout << "min = " << min << "-" << type << endl;
-
-     
- 
-
-   
-
-
+       
+    } 
+    cout << "Maximum value in the array = " << maxElement << " " << "Cell" << "[" << cell << "]" << endl;
 }
 
 void ShiftLeft(int* array, int sizeArray) //выполняет циклический сдвиг массива на заданное число элементов влево
@@ -128,8 +107,7 @@ void ShiftLeft(int* array, int sizeArray) //выполняет цикличес�
         array[sizeArray - 1] = buffer;
 
     }
-    cout << endl;
-
+    cout << "Performans a ciclic shift of the array by a specified number of elements to the left ";
     for (int i = 0; i < sizeArray; i++)
     {
         cout << array[i] << "\t";
@@ -155,7 +133,7 @@ void ShiftRight(int* array, int sizeArray) //выполняет цикличес
         array[0] = buffer;
         cout << endl;
     }
-    cout << endl;
+    cout << "Performans a ciclic shift of the array by a specified number of elements to the righr ";
     for (int i = 0; i < sizeArray; i++)
     {
         cout << array[i] << "\t";
@@ -214,9 +192,7 @@ void Search(int* array, int sizeArray)  //находит в массиве по�
         {
             if (array[i] == array[j])
             {
-                
-                cout << array[i]<< "\t";
-
+                cout << array[i] << "\t";
             }
         }
     }
@@ -228,62 +204,60 @@ void Search(int* array, int sizeArray)  //находит в массиве по�
 int main()
 {
 
-    int minValue, maxValue, sizeArray;
+    int minValue, maxValue, sizeArray, type;
 
 
     cout << "Enter the minimum value : "; cin >> minValue;
     cout << "Enter the maximum value : "; cin >> maxValue;
     cout << "Enter the size array :";  cin >> sizeArray;
-    int* array = new int[sizeArray]; //*Óêàçàòåëü(Çíàþ íå ïðîõîäèëè,íî ðåøèë ïîïðîáûâàòü)
-
-
-    int type;
-
-
-
-
+    
+    int* array = new int[sizeArray];
+ 
 
 
     FillRand(array, minValue, maxValue, sizeArray);
     Print(array, sizeArray);
 
-    cout << endl;
-    cout << "Select an action :" << endl;
-    cin >> type;
+    cout << "5.Perform a cyclic shift of the array by a specified number of elements to left  " << endl;
+    cout << "5.Perform a cyclic shift of the array by a specified number of elements to left  " << endl;
+    cout <<"5.Perform a cyclic shift of the array by a specified number of elements to left  " << endl;
+    cout <<"6.Perform a cyclic shift of the array by a specified number of elements to right " << endl;
 
+    cout << endl;
+    cout << "Select an action :";  cin >> type;
 
     switch (type)
     {
 
-    case 1:
+      case 1:
         Sum(array, sizeArray);
         break;
 
-    case 2:
+      case 2:
         Avg(array, sizeArray);
         break;
 
-    case 3:
+      case 3:
         MinValueIn(array, sizeArray);
         break;
 
-    case 4:
+      case 4:
         MaxValueIn(array, sizeArray);
         break;
 
-    case 5:
+      case 5:
         ShiftLeft(array, sizeArray);
         break;
 
-    case 6:
+      case 6:
         ShiftRight(array, sizeArray);
         break;
 
-    case 7:
+      case 7:
         Sort(array, sizeArray);
         break;
 
-    case 9:
+      case 9:
         Search(array, sizeArray);
         break;
 
