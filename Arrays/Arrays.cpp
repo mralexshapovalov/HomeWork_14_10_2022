@@ -276,7 +276,6 @@ int main()
     case 9:
         Search(array, sizeArray);
         break;
-
     default:
         break;
     }
