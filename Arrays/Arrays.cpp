@@ -8,17 +8,17 @@ using namespace std;
 void FillRand(int* array, double minValue, int maxValue, int sizeArray)
 {
 
-    for (int i = 0; i < sizeArray; i++)
+    for (int i = 0; i <sizeArray; i++)
     {
 
-        array[i] = minValue + rand() * (maxValue - minValue) / RAND_MAX;
+        array[i] = minValue + rand() * (maxValue+ - minValue) / RAND_MAX;
     }
 }
 
 void Print(int* array, int  sizeArray) //выводит массив на экран
 {
 
-    for (int i = 0; i < sizeArray; i++)
+    for (int i = 0; i <sizeArray; i++)
     {
 
         cout << array[i] << "\t";
@@ -175,7 +175,7 @@ void Sort(int* array, int sizeArray)  //выполняет сортировку 
 }
 
 
-void UinqueRand(int* array, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
+void UinqueRand(int* array, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне ???????
 {
 
 
@@ -184,16 +184,37 @@ void UinqueRand(int* array, int sizeArray)  //заполняет массив у
 
 void Search(int* array, int sizeArray)  //находит в массиве повторяюшиеся значения, выводит их на экран
 {
-    int sum = 0;
+
+    int type=0;
+
     for (int i = 0; i < sizeArray; i++)
     {
-       
-        for (int j = i + 1; j < sizeArray; j++)
+        for (int j = 0; j < sizeArray; j++)
         {
+            
+            if (i >= j)
+            {
+                continue;
+            }
             if (array[i] == array[j])
             {
-                cout << array[i] << "\t";
+                for (int z = 0; z < i; z++)
+                {
+                    if (array[z] == array[i])
+                    {
+                        type = 1;
+                        break;
+                    }
+                }
+                if (type == 0) 
+                {
+                    cout << array[i] << " ";
+                    break;
+                }
+               
+                
             }
+            
         }
     }
 }
