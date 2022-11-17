@@ -46,35 +46,25 @@ int* Search(int* array, int sizeArray);  //находит в массиве по
 int main()
 {
 
-    const int sizeArray = 20;
+    const int sizeArray = 10;
+    int minValue; cout << "Enter the minimum range value - "; cin >> minValue;
+    int maxValue; cout << "Enter the maximum range value - "; cin >> maxValue;
     int type;
 
-    int minValueInt = 0;
-    int maxValueInt = 40;
     int* arrayInt = new int[sizeArray];
-
-    int minValueDouble = 0;
-    int maxValueDouble = 100;
     double* arrayDouble = new double[sizeArray];
-
-    int minValueFloat = 0;
-    int maxValueFloat = 100;
     float* arrayFloat = new float[sizeArray];
-
-    int minValueChar = 0;
-    int maxValueChar = 100;
     char* arrayChar = new char[sizeArray];
-
     int* arr = new int[sizeArray];
 
-    UinqueRand(arrayInt, minValueInt, maxValueInt, sizeArray);
-    //FillRand(arrayDouble, minValueInt, maxValueInt, sizeArray);
-    //FillRand(arrayFloat, minValueFloat, maxValueFloat, sizeArray);
-    //FillRand(arrayChar, minValueChar, maxValueChar, sizeArray);
+    UinqueRand(arrayInt, minValue, maxValue, sizeArray);
+    FillRand(arrayDouble, minValue, maxValue, sizeArray);
+    FillRand(arrayFloat, minValue, maxValue, sizeArray);
+    FillRand(arrayChar, minValue, maxValue, sizeArray);
 
     cout << "Output of an array with a data type int : " << endl;
     Print(arrayInt, sizeArray);
- /*   cout << endl;
+    cout << endl;
     cout << "Output of an array with a data type double : " << endl;
     Print(arrayDouble, sizeArray);
     cout << endl;
@@ -85,15 +75,16 @@ int main()
     Print(arrayChar, sizeArray);
     cout << endl;
     cout << endl;
-    cout << "1.Return the sum of the array elements " << endl;
-    cout << "2.Return the arithmetic mean of the array elements " << endl;
-    cout << "3.Return the minimum value of the array " << endl;
-    cout << "4.Return the maximum value of the array " << endl;
-    cout << "5.Perform a cyclic shift of the array by a specified number of elements to left  " << endl;
-    cout << "6.Perform a cyclic shift of the array by a specified number of elements to right " << endl;
-    cout << "7.Sort the array through Bubble sorting " << endl;
-    cout << "8.Fills an array with unique random numbers in a given range" << endl;
-    cout << "9.Find dublicate values in the array and display them on the screen " << endl;*/
+    cout << "1.Return the sum of the array elements \n"
+        "2.Return the arithmetic mean of the array elements\n"
+        "3.Return the minimum value of the array \n"
+        "4.Return the maximum value of the array\n"
+        "5.Perform a cyclic shift of the array by a specified number of elements to left \n"
+        "6.Perform a cyclic shift of the array by a specified number of elements to right\n"
+        "7.Sort the array through Bubble sorting\n"
+        "8.Fills an array with unique random numbers in a given range\n"
+        "9.Find dublicate values in the array and display them on the screen\n"
+        << endl;
 
     cout << endl;
     cout << "Select an action : ";  cin >> type;
@@ -138,13 +129,10 @@ int main()
         {
             cout << arr[i] << "\t";
         }
-        /*   cout << ShiftLeft(arrayInt, sizeArray) << endl*/;
         break;
 
     case 6:
         cout << "6.Perform a cyclic shift of the array by a specified number of elements to right :" << endl;
-
-
         arr = ShiftRight(arrayInt, sizeArray);
         cout << endl;
         for (int i = 0; i < sizeArray; i++)
@@ -170,11 +158,10 @@ int main()
         cin >> MaxValue;
         arr = UinqueRand(arrayInt, minValjue, MaxValue, sizeArray);
         cout << endl;
-        for (int i = 0; i <= sizeArray; i++)
+        for (int i = 0; i < sizeArray; i++)
         {
             cout << arr[i] << "\t";
         }
-        break;
 
     case 9:
         cout << "9.Find dublicate values in the array and display them on the screen " << endl;
@@ -219,7 +206,7 @@ void FillRand(int* array, int minValue, int maxValue, const int sizeArray)
     for (int i = 0; i < sizeArray; i++)
     {
 
-        array[i] = rand() % int((maxValue - minValue) + minValue);
+        array[i] = minValue + rand() % (maxValue - minValue);
     }
 }
 
@@ -241,7 +228,7 @@ void FillRand(double* array, double minValue, double maxValue, const int sizeArr
     for (int i = 0; i < sizeArray; i++)
     {
 
-        array[i] = rand() % int((maxValue - minValue) + minValue);
+        array[i] = minValue + rand() % int(maxValue - minValue);
         array[i] /= 100;
     }
 }
@@ -262,7 +249,7 @@ void FillRand(float* array, float minValue, float maxValue, const int sizeArray)
     for (int i = 0; i < sizeArray; i++)
     {
 
-        array[i] = rand() * float((maxValue - minValue) + minValue);
+        array[i] = minValue + rand() % int(maxValue - minValue);
         array[i] /= 100;
     }
 }
@@ -281,7 +268,7 @@ void FillRand(char* array, int minValue, int maxValue, const int sizeArray)
     for (int i = 0; i < sizeArray; i++)
     {
 
-        array[i] = rand() % int((maxValue - minValue) + minValue);
+        array[i] = minValue + rand() % (maxValue - minValue);
 
     }
 }
@@ -365,8 +352,6 @@ float  Sum(float* array, int sizeArray) //возвращает сумму эле
 
 }
 
-
-
 int Avg(int* array, int sizeArray) //возвращает среднее-арифметическое элементов массива
 {
 
@@ -411,7 +396,6 @@ float Avg(float* array, int sizeArray) //возвращает среднее-а�
     return sumElemnts;
 
 }
-
 
 int MinValueIn(int* array, int sizeArray) //возвращает минимальное значение из массива
 {
@@ -467,10 +451,6 @@ float MinValueIn(float* array, int sizeArray) //возвращает миним�
     return minElement;
 }
 
-
-
-
-
 int MaxValueIn(int* array, int sizeArray) //возвращает максимальное значение из массива
 {
 
@@ -488,7 +468,6 @@ int MaxValueIn(int* array, int sizeArray) //возвращает максима�
     return maxElement;
 }
 
-
 double MaxValueIn(double* array, int sizeArray) //возвращает максимальное значение из массива
 {
 
@@ -505,6 +484,7 @@ double MaxValueIn(double* array, int sizeArray) //возвращает макс�
     }
     return maxElement;
 }
+
 float MaxValueIn(float* array, int sizeArray) //возвращает максимальное значение из массива
 {
 
@@ -522,8 +502,6 @@ float MaxValueIn(float* array, int sizeArray) //возвращает макси�
     return maxElement;
 
 }
-
-
 
 int* ShiftLeft(int* array, int sizeArray) //выполняет циклический сдвиг массива на заданное число элементов влево
 {
@@ -545,14 +523,12 @@ int* ShiftLeft(int* array, int sizeArray) //выполняет цикличес�
     }
 
     return array;
-
-
 }
 
 int* ShiftRight(int* array, int sizeArray) //выполняет циклический сдвиг массива на заданное число элементов вправо
 {
     int value;
-    cout << "Cycle shift Right" << endl;
+    cout << "Cycle shift right" << endl;
     cout << "Enter the number if items : "; cin >> value;
 
     for (int i = 0; i < value; i++)
@@ -591,24 +567,20 @@ int* Sort(int* array, int sizeArray)  //выполняет сортировку 
 
 }
 
-
-int* UinqueRand(int* array, int minValue,int maxValue, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
+int* UinqueRand(int* array, int minValue, int maxValue, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
 {
-    //int minValue, maxValue;
-    ////cout << "Enter the minimum range value - "; cin >> minValue;
-    ////cout << "Enter the maximum range value - "; cin >> maxValue;
 
     for (int i = 0; i <= sizeArray; i++)
     {
 
-        for (int j = 0; j <= sizeArray; j++)
+        for (int j = i + 1; j <= sizeArray; j++)
         {
 
 
             if (array[j] == array[i] && i != j)
             {
 
-                array[i] = minValue+ rand() % (maxValue - minValue);
+                array[i] = minValue + rand() % (maxValue - minValue);
                 j = 0;
             }
         }
@@ -616,7 +588,6 @@ int* UinqueRand(int* array, int minValue,int maxValue, int sizeArray)  //зап�
 
     return array;
 }
-
 
 int* Search(int* array, int sizeArray)  //находит в массиве повторяюшиеся значения, выводит их на экран
 {
@@ -646,10 +617,7 @@ int* Search(int* array, int sizeArray)  //находит в массиве по�
                     return array;
                     break;
                 }
-
-
             }
-
         }
     }
 }
