@@ -11,13 +11,13 @@ using namespace std;
 
 void FillRand(int* array, int minValue, int maxValue, const int sizeArray);
 void FillRand(double* array, double minValue, double maxValue, const int sizeArray);
-void FillRand(float*  array, float minValue, float maxValue, const int sizeArray);
-void FillRand(char*  array, int minValue, int maxValue, const int sizeArray);
+void FillRand(float* array, float minValue, float maxValue, const int sizeArray);
+void FillRand(char* array, int minValue, int maxValue, const int sizeArray);
 
 void Print(int* array, int  sizeArray); //выводит массив на экран
 void Print(double* array, int  sizeArray); //выводит массив на экран
-void Print(float*  array, int  sizeArray); //выводит массив на экран
-void Print(char*  array, int  sizeArray); //выводит массив на экран
+void Print(float* array, int  sizeArray); //выводит массив на экран
+void Print(char* array, int  sizeArray); //выводит массив на экран
 
 int Sum(int* array, int sizeArray); //возвращает сумму элементов массива
 double Sum(double* array, int sizeArray); //возвращает сумму элементов массива
@@ -39,42 +39,42 @@ float MaxValueIn(float* array, int sizeArray); //возвращает макси
 int* ShiftLeft(int* array, int sizeArray); //выполняет циклический сдвиг массива на заданное число элементов влево
 int* ShiftRight(int* array, int sizeArray); //выполняет циклический сдвиг массива на заданное число элементов вправо
 int* Sort(int* array, int sizeArray); //выполняет сортировку массива в порядке возрастания
-int* UinqueRand(int* array, int minValue, int maxValue, const int sizeArray);  //заполняет массив уникальными случайными числами в заданном диапазоне
+int* UinqueRand(int* array, int minValue, int maxValue, int sizeArray);  //заполняет массив уникальными случайными числами в заданном диапазоне
 int* Search(int* array, int sizeArray);  //находит в массиве повторяюшиеся значения, выводит их на экран
 
 
 int main()
 {
 
-    const int sizeArray = 10;
+    const int sizeArray = 20;
     int type;
 
     int minValueInt = 0;
-    int maxValueInt = 100;
+    int maxValueInt = 40;
     int* arrayInt = new int[sizeArray];
 
     int minValueDouble = 0;
     int maxValueDouble = 100;
     double* arrayDouble = new double[sizeArray];
- 
+
     int minValueFloat = 0;
     int maxValueFloat = 100;
-    float* arrayFloat=new float[sizeArray];
+    float* arrayFloat = new float[sizeArray];
 
     int minValueChar = 0;
     int maxValueChar = 100;
-    char* arrayChar=new char[sizeArray];
+    char* arrayChar = new char[sizeArray];
 
     int* arr = new int[sizeArray];
-  
-    FillRand(arrayInt, minValueInt, maxValueInt, sizeArray);
-    FillRand(arrayDouble, minValueInt, maxValueInt, sizeArray);
-    FillRand(arrayFloat, minValueFloat, maxValueFloat, sizeArray);
-    FillRand(arrayChar, minValueChar, maxValueChar, sizeArray);
 
-    cout <<"Output of an array with a data type int : "<< endl;
+    UinqueRand(arrayInt, minValueInt, maxValueInt, sizeArray);
+    //FillRand(arrayDouble, minValueInt, maxValueInt, sizeArray);
+    //FillRand(arrayFloat, minValueFloat, maxValueFloat, sizeArray);
+    //FillRand(arrayChar, minValueChar, maxValueChar, sizeArray);
+
+    cout << "Output of an array with a data type int : " << endl;
     Print(arrayInt, sizeArray);
-    cout << endl;
+ /*   cout << endl;
     cout << "Output of an array with a data type double : " << endl;
     Print(arrayDouble, sizeArray);
     cout << endl;
@@ -93,101 +93,103 @@ int main()
     cout << "6.Perform a cyclic shift of the array by a specified number of elements to right " << endl;
     cout << "7.Sort the array through Bubble sorting " << endl;
     cout << "8.Fills an array with unique random numbers in a given range" << endl;
-    cout << "9.Find dublicate values in the array and display them on the screen " << endl;
-    
+    cout << "9.Find dublicate values in the array and display them on the screen " << endl;*/
+
     cout << endl;
     cout << "Select an action : ";  cin >> type;
 
-     switch (type)
-      {
+    switch (type)
+    {
 
-      case 1:
-          cout << "Sum of the array elements : " << endl;
-          cout <<"int    : " << Sum(arrayInt, sizeArray) << endl;
-          cout <<"double : " << Sum(arrayDouble, sizeArray) << endl;
-          cout <<"float  : " << Sum(arrayFloat, sizeArray) << endl;
-          break;
+    case 1:
+        cout << "Sum of the array elements : " << endl;
+        cout << "int    : " << Sum(arrayInt, sizeArray) << endl;
+        cout << "double : " << Sum(arrayDouble, sizeArray) << endl;
+        cout << "float  : " << Sum(arrayFloat, sizeArray) << endl;
+        break;
 
-      case 2:
-          cout << "Arithmetic mean of the array elements :" << endl;
-          cout << "int    : "<< Avg(arrayInt, sizeArray) << endl;
-          cout << "double : "<< Avg(arrayDouble, sizeArray) << endl;
-          cout << "float  : "<< Avg(arrayFloat, sizeArray) << endl;
-          break;
+    case 2:
+        cout << "Arithmetic mean of the array elements :" << endl;
+        cout << "int    : " << Avg(arrayInt, sizeArray) << endl;
+        cout << "double : " << Avg(arrayDouble, sizeArray) << endl;
+        cout << "float  : " << Avg(arrayFloat, sizeArray) << endl;
+        break;
 
-      case 3:
-          cout << "Minimum value of the array : " << endl;
-          cout << "int    : " << MinValueIn(arrayInt, sizeArray) << endl;
-          cout << "double : " << MinValueIn(arrayDouble, sizeArray) << endl;
-          cout << "float  : " <<  MinValueIn(arrayFloat, sizeArray) << endl;
-          break;
+    case 3:
+        cout << "Minimum value of the array : " << endl;
+        cout << "int    : " << MinValueIn(arrayInt, sizeArray) << endl;
+        cout << "double : " << MinValueIn(arrayDouble, sizeArray) << endl;
+        cout << "float  : " << MinValueIn(arrayFloat, sizeArray) << endl;
+        break;
 
-      case 4:
-          cout << "Maximum value of the array : " << endl;
-          cout << "int    : " << MaxValueIn(arrayInt, sizeArray) << endl;
-          cout << "double : " << MaxValueIn(arrayDouble, sizeArray) << endl;
-          cout << "float  : " << MaxValueIn(arrayFloat, sizeArray) << endl;
-          break;
+    case 4:
+        cout << "Maximum value of the array : " << endl;
+        cout << "int    : " << MaxValueIn(arrayInt, sizeArray) << endl;
+        cout << "double : " << MaxValueIn(arrayDouble, sizeArray) << endl;
+        cout << "float  : " << MaxValueIn(arrayFloat, sizeArray) << endl;
+        break;
 
-      case 5:
-          cout << "5.Perform a cyclic shift of the array by a specified number of elements to left : " << endl;
-          
-         arr=ShiftLeft(arrayInt, sizeArray);
-         cout << endl;
-          for (int i = 0; i < sizeArray; i++) 
-          {
-              cout << arr[i]<<"\t";
-          }
-       /*   cout << ShiftLeft(arrayInt, sizeArray) << endl*/;
-          break;
-         
-      case 6:
-          cout << "6.Perform a cyclic shift of the array by a specified number of elements to right :" << endl;
+    case 5:
+        cout << "5.Perform a cyclic shift of the array by a specified number of elements to left : " << endl;
 
-         
-          arr = ShiftRight(arrayInt, sizeArray);
-          cout << endl;
-          for (int i = 0; i < sizeArray; i++)
-          {
-              cout << arr[i] << "\t";
-          }
-          break;
+        arr = ShiftLeft(arrayInt, sizeArray);
+        cout << endl;
+        for (int i = 0; i < sizeArray; i++)
+        {
+            cout << arr[i] << "\t";
+        }
+        /*   cout << ShiftLeft(arrayInt, sizeArray) << endl*/;
+        break;
 
-      case 7:
-          cout << "7.Sort the array through Bubble sorting :" << endl;
-          
-          arr = Sort(arrayInt, sizeArray);
-          cout << endl;
-          for (int i = 0; i < sizeArray; i++)
-          {
-              cout << arr[i] << "\t";
-          }
-          break;
+    case 6:
+        cout << "6.Perform a cyclic shift of the array by a specified number of elements to right :" << endl;
 
-      case 8:
-       
-          arr = UinqueRand(arrayInt, minValueInt, maxValueInt, sizeArray);
-          cout << endl;
-          for (int i = 0; i < sizeArray; i++)
-          {
-              cout << arr[i] << "\t";
-          }
-          break;
 
-      case 9:
-          cout << "9.Find dublicate values in the array and display them on the screen " << endl;
-         
-          arr = Search(arrayInt, sizeArray);
-          cout << endl;
-          for (int i = 0; i < sizeArray; i++)
-          {
-              cout << arr[i] << "\t";
-          }
-          break;
+        arr = ShiftRight(arrayInt, sizeArray);
+        cout << endl;
+        for (int i = 0; i < sizeArray; i++)
+        {
+            cout << arr[i] << "\t";
+        }
+        break;
 
-      default:
-          break;
-     }
+    case 7:
+        cout << "7.Sort the array through Bubble sorting :" << endl;
+
+        arr = Sort(arrayInt, sizeArray);
+        cout << endl;
+        for (int i = 0; i < sizeArray; i++)
+        {
+            cout << arr[i] << "\t";
+        }
+        break;
+
+    case 8:
+        int minValjue, MaxValue;
+        cin >> minValjue;
+        cin >> MaxValue;
+        arr = UinqueRand(arrayInt, minValjue, MaxValue, sizeArray);
+        cout << endl;
+        for (int i = 0; i <= sizeArray; i++)
+        {
+            cout << arr[i] << "\t";
+        }
+        break;
+
+    case 9:
+        cout << "9.Find dublicate values in the array and display them on the screen " << endl;
+
+        arr = Search(arrayInt, sizeArray);
+        cout << endl;
+        for (int i = 0; i < sizeArray; i++)
+        {
+            cout << arr[i] << "\t";
+        }
+        break;
+
+    default:
+        break;
+    }
 
 
     delete[] arrayInt;
@@ -278,10 +280,10 @@ void FillRand(char* array, int minValue, int maxValue, const int sizeArray)
 
     for (int i = 0; i < sizeArray; i++)
     {
-    
+
         array[i] = rand() % int((maxValue - minValue) + minValue);
-    
-    }  
+
+    }
 }
 
 void Print(int* array, const int  sizeArray) //выводит массив на экран
@@ -330,13 +332,13 @@ void Print(char* array, const int  sizeArray) //выводит массив на
 int  Sum(int* array, int sizeArray) //возвращает сумму элементов массива
 {
     int sum = 0;
-    for (int i = 0; i < sizeArray; i++) 
-    
-    
+    for (int i = 0; i < sizeArray; i++)
+
+
         sum += array[i];
 
 
-        return sum;
+    return sum;
 }
 
 double  Sum(double* array, int sizeArray) //возвращает сумму элементов массива
@@ -344,7 +346,7 @@ double  Sum(double* array, int sizeArray) //возвращает сумму эл
     double sum = 0.0;
     for (int i = 0; i < sizeArray; i++)
 
-    sum += array[i];
+        sum += array[i];
 
 
     return sum;
@@ -541,7 +543,7 @@ int* ShiftLeft(int* array, int sizeArray) //выполняет цикличес�
         array[sizeArray - 1] = buffer;
 
     }
-    
+
     return array;
 
 
@@ -564,7 +566,7 @@ int* ShiftRight(int* array, int sizeArray) //выполняет цикличес
         array[0] = buffer;
         cout << endl;
     }
-    
+
     return array;
 }
 
@@ -590,23 +592,28 @@ int* Sort(int* array, int sizeArray)  //выполняет сортировку 
 }
 
 
-int* UinqueRand(int* array,int minValue,int maxValue,  int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
+int* UinqueRand(int* array, int minValue,int maxValue, int sizeArray)  //заполняет массив уникальными случайными числами в заданном диапазоне
 {
-    for (int i = 0; i < sizeArray; i++) 
+    //int minValue, maxValue;
+    ////cout << "Enter the minimum range value - "; cin >> minValue;
+    ////cout << "Enter the maximum range value - "; cin >> maxValue;
+
+    for (int i = 0; i <= sizeArray; i++)
     {
 
-        for (int j = 0; j < sizeArray; j++) 
+        for (int j = 0; j <= sizeArray; j++)
         {
 
 
-            if (array[j] == array[i] && i != j) 
+            if (array[j] == array[i] && i != j)
             {
 
-                array[i] = rand() % int((maxValue - minValue) + minValue);
+                array[i] = minValue+ rand() % (maxValue - minValue);
+                j = 0;
             }
         }
     }
-    
+
     return array;
 }
 
