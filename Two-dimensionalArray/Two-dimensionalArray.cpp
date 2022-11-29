@@ -45,9 +45,14 @@ float MaxValueIn(float** array, const int sizeArrayRows, const int sizeArrayCows
 
 int ShiftLeft(int** array, const int sizeArrayRows, const int sizeArrayCows); //выполняет циклический сдвиг массива на заданное число элементов влево
 int* ShiftRight(int* array, int sizeArray); //выполняет циклический сдвиг массива на заданное число элементов вправо
+
 void Sort(int** array, const int sizeArrayRows, const int sizeArrayCows); //выполняет сортировку массива в порядке возрастания
+void Sort(double** array, const int sizeArrayRows, const int sizeArrayCows); //выполняет сортировку массива в порядке возрастания
+void Sort(float** array, const int sizeArrayRows, const int sizeArrayCows); //выполняет сортировку массива в порядке возрастания
+
 void UinqueRand(int** array, int minValue, int maxValue, const int sizeArrayRows, const int sizeArrayCows);  //заполняет массив уникальными случайными числами в заданном диапазоне
-int* Search(int* array, int sizeArray);  //находит в массиве повторяюшиеся значения, выводит их на экран
+int Search(int** array, const int sizeArrayRows, const int sizeArrayCows);  //находит в массиве повторяюшиеся значения, выводит их на экран
+
 
 
 int main()
@@ -83,7 +88,7 @@ int main()
     cout << "Output of an array with a data type int : " << endl;
     Print(arrayInt, sizeArrayRows, sizeArrayCows);
     cout << endl;
-    Sort(arrayInt, sizeArrayRows, sizeArrayCows);
+ /*   Sort(arrayInt, sizeArrayRows, sizeArrayCows);*/
     cout << endl;
     cout << "Output of an array with a data type double : " << endl;
     Print(arrayDouble, sizeArrayRows, sizeArrayCows);
@@ -95,7 +100,16 @@ int main()
     Print(arrayChar, sizeArrayRows, sizeArrayCows);
     cout << endl;
     cout << endl;
-
+    Sort(arrayDouble, sizeArrayRows, sizeArrayCows);
+    cout << endl;
+    cout << endl;
+    Sort(arrayFloat, sizeArrayRows, sizeArrayCows);
+    cout << endl;
+    cout << endl;
+    cout << "SEARCH" << endl;
+    cout << Search(arrayInt, sizeArrayRows, sizeArrayCows) << endl;
+    cout << endl;
+    cout << endl;
   
     cout << "1.Return the sum of the array elements \n"
         "2.Return the arithmetic mean of the array elements\n"
@@ -793,8 +807,7 @@ int* ShiftRight(int* array, int sizeArray) //выполняет цикличес
 
 void Sort(int** array, const int sizeArrayRows, const int sizeArrayCows)  //выполняет сортировку массива в порядке возрастания
 {
-    int size = 5;
-   /* int a = 4;
+
     int emptyValue;
 
     for (int k = 0; k < sizeArrayRows; ++k) {
@@ -806,64 +819,96 @@ void Sort(int** array, const int sizeArrayRows, const int sizeArrayCows)  //вы
             {
                 for (int j = 0; j < sizeArrayCows; ++j)
                 {
-                    if (i + 1 == sizeArrayRows and j + 1 == sizeArrayCows)
+
+                    if (array[i][j] > array[k][l])
                     {
-
-                        continue;
-                    }
-                    else
-                    {
-
-                        if (j + 1 == sizeArrayCows and array[i][j] > array[i + 1][0])
-                        {
-
-                            int t = array[i][j];
-                            array[i][j] = array[i + 1][0];
-                            array[i +1][0] = t;
-
-                        }
-
-
-                        if (array[i][j] > array[i][j + 1])
-                        {
-
-                            int t = array[i][j];
-                            array[i][j] = array[i][j + 1];
-                            array[i][j + 1] = t;
-
-                        }
-
+                       emptyValue = array[i][j];
+                       array[i][j] = array[k][l];
+                       array[k][l] = emptyValue;
                     }
                 }
             }
         }
-    }*/
-    for (int k = 0; k < 5; k++) 
-    {
+    }
 
-        for (int j = 1; j < size; j++)
+    for (int i = 0; i < sizeArrayRows; i++)
+    {
+        for (int j = 0; j < sizeArrayCows; j++)
         {
 
-            for (int b = size - 1; b >= j; b--)
-            {
-                if (array[k][b - 1] > array[k][b]) 
-                {
-
-                    int t = array[k][b - 1];
-                    array[k][b - 1] = array[k][b];
-                    array[k][b] = t;
-
-                }
-            }
+            cout << array[i][j] << "  ";
 
         }
+        cout << endl;
+    }   
+}
 
+void Sort(double** array, const int sizeArrayRows, const int sizeArrayCows)  //выполняет сортировку массива в порядке возрастания
+{
+
+    double emptyValue;
+
+    for (int k = 0; k < sizeArrayRows; ++k) {
+
+        for (int l = 0; l < sizeArrayCows; ++l)
+        {
+            for (int i = 0; i < sizeArrayRows; ++i)
+            {
+                for (int j = 0; j < sizeArrayCows; ++j)
+                {
+
+                    if (array[i][j] > array[k][l])
+                    {
+                        emptyValue = array[i][j];
+                        array[i][j] = array[k][l];
+                        array[k][l] = emptyValue;
+                    }
+                }
+            }
+        }
     }
 
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < sizeArrayRows; i++)
     {
-        for (int j = 0; j < size; j++)
+        for (int j = 0; j < sizeArrayCows; j++)
+        {
+
+            cout << array[i][j] << "  ";
+
+        }
+        cout << endl;
+    }
+}
+
+void Sort(float** array, const int sizeArrayRows, const int sizeArrayCows)  //выполняет сортировку массива в порядке возрастания
+{
+
+    float emptyValue;
+
+    for (int k = 0; k < sizeArrayRows; ++k) {
+
+        for (int l = 0; l < sizeArrayCows; ++l)
+        {
+            for (int i = 0; i < sizeArrayRows; ++i)
+            {
+                for (int j = 0; j < sizeArrayCows; ++j)
+                {
+
+                    if (array[i][j] > array[k][l])
+                    {
+                        emptyValue = array[i][j];
+                        array[i][j] = array[k][l];
+                        array[k][l] = emptyValue;
+                    }
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < sizeArrayRows; i++)
+    {
+        for (int j = 0; j < sizeArrayCows; j++)
         {
 
             cout << array[i][j] << "  ";
@@ -872,29 +917,8 @@ void Sort(int** array, const int sizeArrayRows, const int sizeArrayCows)  //вы
         cout << endl;
     }
 
-   
 }
 
-//int* Sort(int* array, int sizeArray)  //выполняет сортировку массива в порядке возрастания
-//{
-//    int emptyValue;
-//
-//    for (int i = 0; i <= sizeArray; i++)
-//    {
-//        for (int j = i + 1; j <= sizeArray; j++)
-//        {
-//            if (array[i] > array[j])
-//            {
-//                emptyValue = array[i];
-//                array[i] = array[j];
-//                array[j] = emptyValue;
-//            }
-//        }
-//    }
-//
-//    return array;
-//
-//}
 void UinqueRand(int** array, int minValue, int maxValue,  const int sizeArrayRows, const int sizeArrayCows)  //заполняет массив уникальными случайными числами в заданном диапазоне
 {
     int size = 5;
@@ -905,10 +929,8 @@ void UinqueRand(int** array, int minValue, int maxValue,  const int sizeArrayRow
         {
             for (int i = 0; i <= sizeArrayRows; i++)
             {
-
                 for (int j = i + 1; j <= sizeArrayCows; j++)
                 {
-
 
                     if (array[l][k] == array[i][j] && i != j&&k!=l)
                     {
@@ -918,7 +940,6 @@ void UinqueRand(int** array, int minValue, int maxValue,  const int sizeArrayRow
                     }
                 }
             }
-
         }
     }
    
@@ -933,40 +954,58 @@ void UinqueRand(int** array, int minValue, int maxValue,  const int sizeArrayRow
         }
         cout << endl;
     }
-  
 }
 
-int* Search(int* array, int sizeArray)  //находит в массиве повторяюшиеся значения, выводит их на экран
+int Search(int** array, const int sizeArrayRows, const int sizeArrayCows)  //находит в массиве повторяюшиеся значения, выводит их на экран
 {
     int type = 0;
 
-    for (int i = 0; i < sizeArray; i++)
+
+    for (int k = 0; k < sizeArrayRows; k++) 
     {
-        for (int j = 0; j < sizeArray; j++)
+
+        for (int l = k + 1; l < sizeArrayCows; l++) 
         {
 
-            if (i >= j)
+            for (int i = 0; i < sizeArrayRows; i++)
             {
-                continue;
-            }
-            if (array[i] == array[j])
-            {
-                for (int z = 0; z < i; z++)
+                for (int j = 0; j < sizeArrayCows; j++)
                 {
-                    if (array[z] == array[i])
+
+                    if (i >= j&& k>=l)
                     {
-                        type = 1;
-                        break;
+                        continue;
+                    }
+
+                    if (array[i][j] == array[k][l])
+                    {
+                        for (int z = 0; z < i; z++)
+                        {
+                            for (int y = 0; y < j; y++) 
+                            {
+                                if (array[z][y] == array[i][j])
+                                {
+                                    type = 1;
+                                    break;
+                                }
+                            }
+
+                          
+                        }
+                        if (type == 0)
+                        {
+                            return **array;
+                            break;
+                        }
                     }
                 }
-                if (type == 0)
-                {
-                    return array;
-                    break;
-                }
             }
+
         }
+
     }
+   
+ 
 }
 
 
