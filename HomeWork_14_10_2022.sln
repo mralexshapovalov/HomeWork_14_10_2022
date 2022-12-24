@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecursionFunction", "Recurs
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Two-dimensionalArray", "Two-dimensionalArray\Two-dimensionalArray.vcxproj", "{838CE832-FEF8-4C08-A07D-16E08F0BDF4C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicMemory", "DynamicMemory\DynamicMemory.vcxproj", "{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{838CE832-FEF8-4C08-A07D-16E08F0BDF4C}.Release|x64.Build.0 = Release|x64
 		{838CE832-FEF8-4C08-A07D-16E08F0BDF4C}.Release|x86.ActiveCfg = Release|Win32
 		{838CE832-FEF8-4C08-A07D-16E08F0BDF4C}.Release|x86.Build.0 = Release|Win32
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Debug|x64.ActiveCfg = Debug|x64
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Debug|x64.Build.0 = Debug|x64
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Debug|x86.ActiveCfg = Debug|Win32
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Debug|x86.Build.0 = Debug|Win32
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Release|x64.ActiveCfg = Release|x64
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Release|x64.Build.0 = Release|x64
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Release|x86.ActiveCfg = Release|Win32
+		{A647E6D8-A9A4-40E2-97B0-DA12F4F52667}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
